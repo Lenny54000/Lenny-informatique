@@ -1,141 +1,117 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Affiche Lenny Informatique</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Affiche Lenny Informatique</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #007bff, #00d4ff);
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            perspective: 1000px;
-            position: relative;
-        }
+    body {
+      font-family: 'Poppins', sans-serif;
+      /* Arrière-plan animé en gradient violets */
+      background: linear-gradient(45deg, #7F00FF, #E100FF, #7F00FF);
+      background-size: 400% 400%;
+      animation: gradientAnimation 15s ease infinite;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      perspective: 1000px;
+      position: relative;
+    }
 
-        /* Arrière-plan animé avec zones lumineuses */
-        .background {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-        .light {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 80%);
-            border-radius: 50%;
-            filter: blur(100px);
-            animation: moveLights 10s infinite alternate ease-in-out;
-            mix-blend-mode: overlay; /* Permet une meilleure fusion des lumières */
-        }
+    /* Zone de texte centrale agrandie */
+    .container {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      padding: 40px;
+      width: 500px;
+      text-align: center;
+      transform-style: preserve-3d;
+      transition: transform 0.1s ease-out;
+    }
 
-        /* Positions initiales et durées différentes */
-        .light:nth-child(1) { top: 10%; left: 15%; animation-duration: 14s; }
-        .light:nth-child(2) { top: 40%; left: 60%; animation-duration: 9s; }
-        .light:nth-child(3) { top: 70%; left: 30%; animation-duration: 13s; }
-        .light:nth-child(4) { top: 20%; left: 80%; animation-duration: 11s; }
+    h1 {
+      color: #7F00FF;
+      margin: 0;
+      font-size: 32px;
+      font-weight: 600;
+    }
 
-        @keyframes moveLights {
-            from { transform: translateY(-50px) translateX(-50px); opacity: 0.7; }
-            to { transform: translateY(50px) translateX(50px); opacity: 0.5; }
-        }
+    h2 {
+      color: #333;
+      font-size: 22px;
+      margin-top: 12px;
+    }
 
-        .container {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            padding: 25px;
-            width: 350px;
-            text-align: center;
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease-out;
-        }
+    p {
+      color: #555;
+      margin: 16px 0;
+      font-size: 18px;
+    }
 
-        h1 {
-            color: #007bff;
-            margin: 0;
-            font-size: 26px;
-            font-weight: 600;
-        }
+    .contact-info {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #333;
+    }
 
-        h2 {
-            color: #333;
-            font-size: 18px;
-            margin-top: 8px;
-        }
+    .contact-info a {
+      color: #7F00FF;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease, font-weight 0.3s ease;
+    }
 
-        p {
-            color: #555;
-            margin: 12px 0;
-            font-size: 15px;
-        }
-
-        .contact-info {
-            margin-top: 15px;
-            font-size: 14px;
-            color: #333;
-        }
-
-        .contact-info a {
-            color: #007bff;
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    /* Au survol, les coordonnées deviennent plus foncées et soulignées */
+    .contact-info a:hover {
+      color: #4B0082; /* Couleur plus foncée */
+      font-weight: 900;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <div class="background">
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
+  <div class="container" id="card">
+    <h1>💻 Lenny Informatique</h1>
+    <h2>Aide informatique à domicile</h2>
+    <p>Besoin d'assistance pour votre ordinateur ?</p>
+    <p>Installation, dépannage, conseils... Je suis là pour vous aider !</p>
+    <div class="contact-info">
+      <p>📞 Téléphone : <a href="tel:+33610897744">+33 6 10 89 77 44</a></p>
+      <p>📧 Email : <a href="mailto:lenny.c@mailo.com">lenny.c@mailo.com</a></p>
+      <p>📍 Nancy, Grand Est</p>
     </div>
+  </div>
 
-    <div class="container" id="card">
-        <h1>💻 Lenny Informatique</h1>
-        <h2>Aide informatique à domicile</h2>
-        <p>Besoin d'assistance pour votre ordinateur ?</p>
-        <p>Installation, dépannage, conseils... Je suis là pour vous aider !</p>
-        <div class="contact-info">
-            <p>📞 Téléphone : <a href="tel:+33610897744">+33 6 10 89 77 44</a></p>
-            <p>📧 Email : <a href="mailto:lenny.c@mailo.com">lenny.c@mailo.com</a></p>
-            <p>📍 Nancy, Grand Est</p>
-        </div>
-    </div>
+  <script>
+    const card = document.getElementById('card');
 
-    <script>
-        const card = document.getElementById('card');
+    document.addEventListener('mousemove', (e) => {
+      const { clientX, clientY } = e;
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
 
-        document.addEventListener('mousemove', (e) => {
-            const { clientX, clientY } = e;
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
+      const deltaX = (clientX - centerX) / 25;
+      const deltaY = (centerY - clientY) / 25; // Inversion du mouvement vertical
 
-            const deltaX = (clientX - centerX) / 25;
-            const deltaY = (centerY - clientY) / 25; // Inversion du mouvement vertical
-
-            card.style.transform = `rotateY(${deltaX}deg) rotateX(${deltaY}deg)`;
-        });
-    </script>
+      card.style.transform = `rotateY(${deltaX}deg) rotateX(${deltaY}deg)`;
+    });
+  </script>
 </body>
 </html>
